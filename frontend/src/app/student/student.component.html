@@ -1,0 +1,70 @@
+<header>
+    <h4>Moj najdrazi nastavnik</h4>
+    
+    <div class="dropdown">
+        <div>
+            <a [routerLink]="['/student', username]" class="header-button">Profil</a>
+        </div>
+        <div class="dropdown-content">
+            <a [routerLink]="['/teacherMenu', username]">Nastavnici</a>
+            <a [routerLink]="['/studentClass', username]">Casovi</a>
+            <a routerLink="/">Odjavi se</a>
+        </div>
+    </div>
+
+</header>
+
+<div class="container">
+    <div class="table-container"> 
+        <table class="table">
+            <tr *ngIf="student.picture">
+                <td colspan="4"class="image-cell"><img src="../../assets/pic/{{student.picture}}" alt="Nema">
+                <br> <button class="button" (click)="chProfilePic()">Azuriraj prfilnu sliku</button>
+                </td>
+            </tr>
+            
+            <tr *ngIf="!student.picture">
+                <td colspan="4"class="image-cell"><img src="../../assets/default/male.jpg" alt="Nema">
+                <br> <button class="button" (click)="chProfilePic()">Azuriraj prfilnu sliku</button>
+                </td>
+            </tr>
+            <tr>
+                <td>Ime: </td>
+                <td>{{ student.firstname }}</td>
+                <td><input type="text" name="firstname" id="firstname" placeholder="Novo ime.." [(ngModel)]="firstname"></td>
+                <td><button class="button" (click)="chName()">Azuriraj ime</button></td>
+            </tr>
+
+            <tr>
+                <td>Prezime: </td>
+                <td>{{ student.lastname }}</td>
+                <td><input type="text" name="lastname" id="lastname" placeholder="Novo prezime.." [(ngModel)]="lastname"></td>
+                <td><button class="button" (click)="chSurname()">Azuriraj prezime</button></td>
+            </tr>
+
+            <tr>
+                <td>Adresa: </td>
+                <td>{{ student.address }}</td>
+                <td><input type="text" name="address" id="address" placeholder="Nova adresa.." [(ngModel)]="address"></td>
+                <td><button class="button" (click)="chAddress()">Azuriraj adresu</button></td>
+            </tr>
+
+            <tr>
+                <td>Tip skole: </td>
+                <td>{{ student.schoolType }}</td>
+                <td><input type="text" name="type" id="type" placeholder="Nova skola.." [(ngModel)]="type"></td>
+                <td><button class="button" (click)="chType()">Azuriraj tip skole</button></td>
+            </tr>
+
+            <tr>
+                <td>Razred: </td>
+                <td>{{ student.grade }}</td>
+                <td></td>
+                <td><button class="button" (click)="chGrade()">Azuriraj razred</button></td>
+            </tr>
+        </table>
+    </div>
+    <br>
+    <br>
+</div>
+ 

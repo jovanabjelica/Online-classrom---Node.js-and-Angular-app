@@ -1,0 +1,71 @@
+<header>
+    <h4>Moj najdrazi nastavnik</h4>
+    
+    <div class="dropdown">
+        <div>
+            <a [routerLink]="['/teacherMenu', username]" class="header-button">Nastavnici</a>
+        </div>
+        <div class="dropdown-content">
+            <a [routerLink]="['/student', username]">Profil</a>
+            <a [routerLink]="['/studentClass', username]">Casovi</a>
+            <a routerLink="/">Odjavi se</a>
+        </div>
+    </div>
+</header>
+
+<div class="container">
+    <table class="table">
+        <tr>
+          <th>Naziv predmeta</th>
+          <th>Angažovani nastavnici</th>
+        </tr>
+        <tr *ngFor="let sub of subjects">
+          <td>{{ sub.name }}</td>
+          <td>
+            <button class="button" (click)="seeTeachers(sub)">Prikazi angazovane</button> 
+            <div *ngIf="selectedSubject === sub">
+              <br>
+              <table class="table">
+                <tr>
+                  <th>Ime</th>
+                  <th>Prezime</th>
+                  <th>Ocena</th>
+                  <th></th>
+                </tr>
+                <tr *ngFor="let teacher of checkedTeachers">
+                  <td>{{ teacher.firstname }}</td>
+                  <td>{{ teacher.lastname }}</td>
+                  <td *ngIf="teacher.reviewsAvg"> {{ teacher.reviewsAvg }}  </td>
+                  <td *ngIf="!teacher.reviewsAvg"> / </td>
+                  <td *ngIf="teacher.reviewsAvg">
+                    <span *ngFor="let star of getStarArray(getRoundedRating(teacher.reviewsAvg))">&#9733;</span>
+                  </td>
+                  <td><a [routerLink]="['/teacherInfo', username, teacher.username]">Recenzije</a></td>
+                </tr>
+                <tr>
+                    <td><button class="button" (click)="sortByNameAscending()">Sortiraj po imenu - rastuce</button></td>
+                    <td><button class="button" (click)="sortBySurnameAscending()">Sortiraj po prezimenu - rastuce</button></td>
+                    <td></td>
+                </tr>
+                <tr>
+                  <td><button class="button" (click)="sortByNameDescending()">Sortiraj po imenu - opadajuce</button></td>
+                  <td><button class="button" (click)="sortBySurnameDescending()">Sortiraj po prezimenu - opadajuce</button></td>
+                  <td></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><button class="button" (click)="hideSubject()">Sakrij prikaz</button></td>
+                </tr>
+              </table>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <button class="button" (click)="sortSubjectAsc()">Sortiraj predmete - rastuce</button>
+          </td>
+          <td>
+            <button class="button" (click)="sortSubjectDesc()">Sortiraj predmete - opadajuce</button>
+          </td>
+        </tr>
+      </table>
+</div>

@@ -1,0 +1,119 @@
+<header>
+    <h4>Moj najdrazi nastavnik</h4>
+    
+    <div class="dropdown">
+        <div>
+            <a [routerLink]="['/teacherMenu', studentUsername]" class="header-button">Nastavnici</a>
+        </div>
+        <div class="dropdown-content">
+            <a [routerLink]="['/student', studentUsername]">Profil</a>
+            <a [routerLink]="['/studentClass', studentUsername]">Casovi</a>
+            <a routerLink="/">Odjavi se</a>
+        </div>
+    </div>
+</header>
+
+<div class="container">
+    <div class="table-container" *ngIf="teacher">
+        <table class="table">
+            <tr *ngIf="teacher.picture">
+                <td colspan="4"class="image-cell"><img src="../../assets/pic/{{teacher.picture}}" alt="Nema">
+                </td>
+            </tr>
+            <tr>
+                <td>Ime: </td>
+                <td> {{ teacher.firstname }} </td>
+            </tr>
+            <tr>
+                <td>Prezime: </td>
+                <td> {{ teacher.lastname }} </td>
+            </tr>
+            <tr>
+                <td>E-mail: </td>
+                <td> {{ teacher.email }} </td>
+            </tr>
+            <tr>
+                <td>Broj telefona: </td>
+                <td> {{ teacher.mobile }} </td>
+            </tr>
+            <tr>
+                <td>Predmeti: </td>
+                <td>
+                    <div *ngFor="let sub of teacher.subjects">
+                        {{ sub }}
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td [attr.rowspan]="teacher.comments.length + 1">Komentari: </td>
+            </tr>
+            <tr *ngFor="let com of teacher.comments">
+                <td>
+                    {{ com }}
+                </td>
+            </tr>
+            <tr>
+                <td [attr.rowspan]="teacher.reviews.length + 1">Recenzije: </td>
+            </tr>
+            <tr *ngFor="let r of teacher.reviews">
+                <td>
+                    {{ r.username }}: {{ r.review }}
+                </td>
+            </tr>
+        </table>
+    </div>
+    
+    <hr>
+
+    <div class="formAppointment">
+        <h3 style="text-align: center;">Zakazi cas putem forme!</h3>
+        <div>
+            <table>
+                <tr>
+                    <td>Odaberite predmet koji zelite da pohadjate: </td>   
+                    <td *ngIf="teacher.subjects.length > 1">
+                        <select name="subject" id="subject" [(ngModel)]="choosen">
+                            <option *ngFor="let sub of teacher.subjects" [attr.value]="sub">
+                                {{ sub }}
+                            </option>
+                        </select>
+                    </td>
+
+                    <td *ngIf="teacher.subjects.length == 1">
+                        <select name="subject" id="subject" disabled >
+                            <option *ngFor="let sub of teacher.subjects" [attr.value]="sub" selected [(ngModel)]="choosen">
+                                {{ sub }}
+                            </option>
+                        </select>
+                    </td>
+
+                </tr>
+
+                <tr>
+                    <td>Izaberite datum i vreme: </td>
+                    <td><input type="datetime-local" id="datetime" name="datetime" [(ngModel)]="datetime"></td>
+                </tr>
+
+                <tr>
+                    <td>Dodajte opis gradiva: </td>
+                    <td><textarea name="material" id="material" cols="50" rows="10" [(ngModel)]="descr"></textarea></td>
+                </tr>
+
+                <tr>
+                    <td><input type="checkbox" name="double" id="double" [(ngModel)]="double">Zelim dupli cas</td>
+                    <td style="justify-content: center; display: flex;"><button class="button" (click)="appointment()">Zakazi</button></td>
+                </tr>
+
+            </table>
+            
+            <div class="error">
+                {{ errorForm }}
+            </div>
+
+        </div>
+    </div>
+
+    <br><br>
+
+</div>
+

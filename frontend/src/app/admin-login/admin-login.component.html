@@ -1,0 +1,37 @@
+<app-header></app-header>
+<div class="container">
+    <h1>Prijava</h1>
+    <form>
+        <table>
+            <td>Unesite korisnicko ime: </td>
+            <td><input type="text" name="username" id="username" [(ngModel)]="username"></td>
+            <tr>
+                <td colspan="2">
+                    <hr>
+                </td>
+            </tr>
+            <tr>
+                <td>Unesite lozinku: </td>
+                <td><input type="password" name="password" id="password" [(ngModel)]="password"></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <hr>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button class="button" (click)="prijava()">Prijavi se!</button>
+                </td>
+                <td>
+                    <a routerLink="adminChangePassword">Promeni lozinku!</a>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" class="error">
+                    {{ error }}
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>

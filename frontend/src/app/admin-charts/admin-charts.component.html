@@ -1,0 +1,36 @@
+<header>
+    <h4>Moj najdrazi nastavnik</h4>
+    
+    <div class="dropdown">
+        <div>
+            <a routerLink="/admin" class="button">Nazad</a>
+        </div>
+    </div>
+
+</header>
+
+<div class="container">
+    <h1 style="color: purple;">Broj nastavnika po predmetima</h1>
+    <canvas  id="subTeacher" style="padding-bottom: 5%;">{{ chart1 }}</canvas>
+
+    <h1 style="color: green;">Broj nastavnika po uzrastima</h1>
+    <canvas  id="gradeTeacher" style="padding-bottom: 5%;">{{ chart2 }}</canvas>
+
+    <h1 style="color: orange;">Broj nastavnika po polovima</h1>
+    <canvas  id="genderTeacher" style="padding-bottom: 5%;">{{ chart3 }}</canvas>
+
+    <h1 style="color: blue;">Broj ucenika po polovima</h1>
+    <canvas  id="genderStudent" style="padding-bottom: 5%;">{{ chart4 }}</canvas>
+
+    <h1 style="color: yellowgreen;">Broj casova po danima (2023)</h1>
+    <canvas  id="weekClass" style="padding-bottom: 5%;">{{ chart5 }}</canvas>
+
+    <h1 style="color: orange;">Mesecni casovi nastavnika (2023)</h1>
+    <canvas  id="chart6" style="padding-bottom: 5%;">{{ chart6 }}</canvas>
+
+    <h1 style="color: green;">Ocene nastavnik</h1>
+    <canvas  id="teacherGrades" style="padding-bottom: 5%;">{{ extra1 }}</canvas>
+
+    <h1 style="color: purple;">Ocene studenti</h1>
+    <canvas  id="studentGrades" style="padding-bottom: 5%;">{{ extra2 }}</canvas>
+</div>

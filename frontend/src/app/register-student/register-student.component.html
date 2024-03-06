@@ -1,0 +1,118 @@
+<app-header></app-header>
+<div class="container">
+    <h1>Registracija-Student</h1>
+    <form>
+        <table>
+            <tr>
+                <td>Unesite ime: </td>
+                <td><input type="text" name="firstname" id="firstname" [(ngModel)]="firstname"></td>
+            </tr>
+            <tr>
+                <td colspan="2" class="error">
+                    {{ errorFirstname }}
+                    <hr>
+                </td>
+            </tr>
+            <tr>
+                <td>Unesite prezime: </td>
+                <td><input type="text" name="lastname" id="lastname" [(ngModel)]="lastname"></td>
+            </tr>
+            <tr>
+                <td colspan="2" class="error">
+                    {{ errorLastname }}
+                    <hr>
+                </td>
+            </tr>
+            <tr>
+                <td>Unesite lozinku: </td>
+                <td><input type="password" name="password" id="password" [(ngModel)]="password"></td>
+            </tr>
+            <tr>
+                <td colspan="2" class="error">
+                    {{ errorPassword }}
+                    <hr>
+                </td>
+            </tr>
+            <tr>
+                <td>Unesite broj telefona: </td>
+                <td><input type="text" name="mobile" id="mobile" [(ngModel)]="mobile"></td>
+            </tr>
+            <tr>
+                <td colspan="2" class="error">
+                    {{ errorMobile }}
+                    <hr>
+                </td>
+            </tr>
+            <tr>
+                <td>Unesite bezbedonosno pitanje: </td>
+                <td><input type="text" name="securityQuestion" id="securityQuestion" [(ngModel)]="securityQuestion"></td>
+            </tr>
+            <tr>
+                <td colspan="2" class="error">
+                    {{ errorSecurityQ }}
+                    <hr>
+                </td>
+            </tr>
+            <tr>
+                <td>Unesite bezbedonosni odgovor: </td>
+                <td><input type="text" name="securityAnswer" id="securityAnswer" [(ngModel)]="securityAnswer"></td>
+            </tr>
+            <tr>
+                <td colspan="2" class="error">
+                    {{ errorSecurityA }}
+                    <hr>
+                </td>
+            </tr>
+            <tr>
+                <td>Izaberite pol: </td>
+                <td><select name="gender" id="gender" [(ngModel)]="gender"> <option value="M">Muski</option><option value="Z">Zenski</option></select></td>
+            </tr>
+            <tr>
+                <td colspan="2" class="error">
+                    {{ errorGender }}
+                    <hr>
+                </td>
+            </tr>
+            <tr>
+                <td>Unesite adresu: </td>
+                <td><input type="text" name="address" id="address" [(ngModel)]="address"></td>
+            </tr>
+            <tr>
+                <td colspan="2" class="error">
+                    {{ errorAddress }}
+                    <hr>
+                </td>
+            </tr>
+            <tr>
+                <td>Unesite tip skole: </td>
+                <td><select name="type" id="type" [(ngModel)]="type">
+                    <option value="osnovna">Osnovna</option>
+                    <option value="srednja-gimnazija">Gimnazija</option>
+                    <option value="srednja-strucna">Strucna</option>
+                    <option value="srednja-umetnicka">Umetnicka</option>
+                </select></td>
+            </tr>
+            <tr>
+                <td colspan="2" class="error">
+                    {{ errorType }}
+                    <hr>
+                </td>
+            </tr>
+            <tr>
+                <td>Unesite razred: </td>
+                <td><input type="number" name="grade" id="grade" [(ngModel)]="grade" min="1" max="{{ type === 'osnovna' ? 8 : 4 }}"></td>
+            </tr>
+            <tr>
+                <td colspan="2" class="error">
+                    {{ errorGrade }}
+                    <hr>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <button class="button" (click)="registracija()">Registruj se!</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>

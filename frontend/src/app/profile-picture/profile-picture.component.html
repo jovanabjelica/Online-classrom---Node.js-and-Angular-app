@@ -1,0 +1,24 @@
+<app-header></app-header>
+<div class="container">
+    <h1>Zdravo, {{ username }} </h1>
+
+    <form>
+
+        <table>
+            <tr>
+                <td colspan="2">
+                    <img src="../../assets/default/male.jpg" alt="">
+                </td>
+            </tr>
+            <tr>
+                <td>Izaberite profilnu sliku: </td>
+                <td><input type="file" name="picture" id="picture" accept=".png, .jpg" (change)="onFileChange($event)"></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <button class="button" (click)="potvrda()">Potvrdi</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>

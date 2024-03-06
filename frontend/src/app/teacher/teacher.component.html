@@ -1,0 +1,100 @@
+<header>
+    <h4>Moj najdrazi nastavnik</h4>
+    
+    <div class="dropdown">
+        <div>
+            <a [routerLink]="['/teacher', username]" class="header-button">Profil</a>
+        </div>
+        <div class="dropdown-content">
+            <a [routerLink]="['/class', username]">Casovi</a>
+            <a [routerLink]="['/myStudents', username]">Moji ucenicni</a>
+            <a routerLink="/">Odjavi se</a>
+        </div>
+    </div>
+
+</header>
+
+<div class="container">
+    <div class="table-container"> 
+        <table class="table">
+            <tr *ngIf="teacher.picture">
+                <td colspan="4"class="image-cell"><img src="../../assets/pic/{{teacher.picture}}" alt="Nema">
+                <br> <button class="button" (click)="chProfilePic()">Azuriraj prfilnu sliku</button>
+                </td>
+            </tr>
+            
+            <tr *ngIf="!teacher.picture">
+                <td colspan="4"class="image-cell"><img src="../../assets/default/male.jpg" alt="Nema">
+                <br> <button class="button" (click)="chProfilePic()">Azuriraj prfilnu sliku</button>
+                </td>
+            </tr>
+            <tr>
+                <td>Ime: </td>
+                <td>{{ teacher.firstname }}</td>
+                <td><input type="text" name="firstname" id="firstname" placeholder="Novo ime.." [(ngModel)]="firstname"></td>
+                <td><button class="button" (click)="chFirstname()">Azuriraj ime</button></td>
+            </tr>
+
+            <tr>
+                <td>Prezime: </td>
+                <td>{{ teacher.lastname }}</td>
+                <td><input type="text" name="lastname" id="lastname" placeholder="Novo prezime.." [(ngModel)]="lastname"></td>
+                <td><button class="button" (click)="chLastname()">Azuriraj prezime</button></td>
+            </tr>
+
+            <tr>
+                <td>Adresa: </td>
+                <td>{{ teacher.address }}</td>
+                <td><input type="text" name="address" id="address" placeholder="Nova adresa.." [(ngModel)]="address"></td>
+                <td><button class="button" (click)="chAddress()">Azuriraj adresu</button></td>
+            </tr>
+
+            <tr>
+                <td>Email: </td>
+                <td>{{ teacher.email }}</td>
+                <td><input type="text" name="email" id="email" placeholder="Novi email.." [(ngModel)]="email"></td>
+                <td><button class="button" (click)="chEmail()">Azuriraj email</button></td>
+            </tr>
+
+            <tr>
+                <td>Telefon: </td>
+                <td>{{ teacher.mobile }}</td>
+                <td><input type="text" name="phone" id="phone" placeholder="Novi broj.." [(ngModel)]="phone"></td>
+                <td><button class="button" (click)="chMobile()">Azuriraj broj</button></td>
+            </tr>
+
+            <tr>
+                <td>Dodaj predmet: </td>
+                <td><input type="text" name="newSub" id="newSub" [(ngModel)]="newSubject"></td>
+                <td></td>
+                <td><button class="button" (click)="chSubjectsAdd()">Dodaj predmet</button></td>
+            </tr>
+
+            <tr>
+                <td>Ukloni predmet: </td>
+                <td><input type="text" name="oldSub" id="oldSub" [(ngModel)]="oldSubject"></td>
+                <td></td>
+                <td><button class="button" (click)="chSubjectsDel()">Ukloni predmet</button></td>
+            </tr>
+
+            <tr>
+                <td>Azuriraj uzrast ucenika: </td>
+                <td>
+                    <input type="checkbox" name="class" id="1" value="1" (change)="selectedGrade($event, '1-4. razred')"> Osnovna skola 1-4. razred<br>
+                    <input type="checkbox" name="class" id="5" value="5" (change)="selectedGrade($event, '5-8. razred')"> Osnovna skola 5-8. razred<br>
+                    <input type="checkbox" name="class" id="s" value="s" (change)="selectedGrade($event, 'Srednja skola')"> Srednja skola<br>
+                </td>
+                <td></td>
+                
+                <td><button class="button" (click)="chGrades()">Azuriraj uzrast</button></td>
+            </tr>
+            <tr *ngIf="error!=''">
+                <td colspan="4" class="error">
+                    {{ error }}
+                </td>
+            </tr>
+        </table>
+    </div>
+    <br>
+    <br>
+</div>

@@ -1,0 +1,27 @@
+<app-header></app-header>
+<div class="container">
+    <h1>Zdravo, {{ username }}</h1>
+    <h3>
+        Sledeci korak u tvojoj registraciji je slanje CV-a. CV ce pomoci administratorima da odrede da li si podoban/podobna da postanes nastavnik!
+    </h3>
+    <form enctype="multipart/form-data">
+        <table>
+            <tr>
+                <td>Izaberi PDF fajl:</td>
+                <td><input type="file" name="pdfFile" id="pdfFile" accept=".pdf" (change)="onFileChange($event)"></td>
+            </tr>
+            <tr>
+                <td colspan="2" style="display: flex; justify-content: center;">
+                    <button class="button" (click)="accept()">Prilozi fajl</button>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <hr>
+                    <div class="error"> {{ error }} </div>
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+

@@ -1,0 +1,238 @@
+[{
+  "_id": {
+    "$oid": "65d2100f5fda4334573ebbc1"
+  },
+  "reviews": [],
+  "firstname": "Vanja",
+  "lastname": "Bjelica",
+  "username": "vanjabjelica",
+  "password": "21cb6b2b0325e10d4b733b4b806164357b2528f6cb335d1529396477b1e722c3",
+  "email": "vanjabjelica@gmail.com",
+  "mobile": "0655784325",
+  "securityQuestion": "Omiljeni film",
+  "securityAnswer": "Harry Potter and Goblet of Fire",
+  "gender": "Z",
+  "address": "Mirijevski venac",
+  "grade": 4,
+  "schoolType": "srednja-gimnazija",
+  "picture": "vanjabjelica.jpg"
+},
+{
+  "_id": {
+    "$oid": "65d210c05fda4334573ebbd7"
+  },
+  "reviews": [],
+  "firstname": "Jovana",
+  "lastname": "Bjelica",
+  "username": "jovanabjelica",
+  "password": "9eb46c3e84116b473c34e02dcdf49c2a7a7a05f5b26383a7a191ba862fe9e751",
+  "email": "jovanabjelica@gmail.com",
+  "mobile": "0669817123",
+  "securityQuestion": "Omiljeni kosarkas",
+  "securityAnswer": "Kevin Punter",
+  "gender": "Z",
+  "address": "Mirijevski venac 30",
+  "grade": 4,
+  "schoolType": "srednja-gimnazija",
+  "picture": "jovanabjelica.jpg"
+},
+{
+  "_id": {
+    "$oid": "65d211155fda4334573ebbe7"
+  },
+  "reviews": [
+    {
+      "username": "natasabjelica",
+      "review": 5,
+      "_id": {
+        "$oid": "65d2223b5fda4334573ebdfa"
+      }
+    }
+  ],
+  "firstname": "Ema",
+  "lastname": "Punter",
+  "username": "emapunter",
+  "password": "5b37e4ec975310014904aa49c39fccdc5f70b288b71f0157e3ef44c6ba80ee55",
+  "email": "emapunter@gmail.com",
+  "mobile": "0658712345",
+  "securityQuestion": "Visina",
+  "securityAnswer": "180cm",
+  "gender": "Z",
+  "address": "Kneza Milosa bb",
+  "grade": 6,
+  "schoolType": "osnovna",
+  "picture": "emapunter.jpg",
+  "reviewsAvg": 5,
+  "reviewsNum": 1
+},
+{
+  "_id": {
+    "$oid": "65d212315fda4334573ebc04"
+  },
+  "reviews": [
+    {
+      "username": "natasabjelica",
+      "review": 4,
+      "_id": {
+        "$oid": "65d2222e5fda4334573ebdf6"
+      }
+    }
+  ],
+  "firstname": "Marko",
+  "lastname": "Markovic",
+  "username": "markomarkovic",
+  "password": "ee333658976e2cb6ddda84e09e83d21eae90310f4354ebef199f4daac21cb321",
+  "email": "markomarkovic@gmail.com",
+  "mobile": "0654321212",
+  "securityQuestion": "Omiljeni pokemon",
+  "securityAnswer": "Pikacu",
+  "gender": "M",
+  "address": "Borska 36a",
+  "grade": 3,
+  "schoolType": "srednja-strucna",
+  "picture": "markomarkovic.jpg",
+  "reviewsAvg": 4,
+  "reviewsNum": 1
+},
+{
+  "_id": {
+    "$oid": "65d2128a5fda4334573ebc11"
+  },
+  "reviews": [],
+  "firstname": "Matija",
+  "lastname": "Kreckovic",
+  "username": "matijakreckovic",
+  "password": "0b8d8b77adb6bbe198c18f058c8a28ab21ff68404f2c90e4473180659842e06c",
+  "email": "matijakreckovic@gmail.com",
+  "mobile": "0668123636",
+  "securityQuestion": "Omiljeni film",
+  "securityAnswer": "Sesto culo",
+  "gender": "M",
+  "address": "Ivo Lola Ribara",
+  "grade": 1,
+  "schoolType": "srednja-gimnazija",
+  "picture": "matijakreckovic.jpg"
+},
+{
+  "_id": {
+    "$oid": "65d212fb5fda4334573ebc1e"
+  },
+  "reviews": [
+    {
+      "username": "natasabjelica",
+      "review": 5,
+      "_id": {
+        "$oid": "65d222535fda4334573ebe03"
+      }
+    }
+  ],
+  "firstname": "David",
+  "lastname": "Punter",
+  "username": "davidpunter",
+  "password": "2c3eee0e9a8d40317303a8b0da07bf242e9a62268e62148ace696866f1a5e612",
+  "email": "davidpunter@gmail.com",
+  "mobile": "0658712345",
+  "securityQuestion": "Omiljeni kosarkas",
+  "securityAnswer": "Kevin Punter",
+  "gender": "M",
+  "address": "Brace Jerkovic 36b",
+  "grade": 1,
+  "schoolType": "osnovna",
+  "picture": "davidpunter.jpg",
+  "reviewsAvg": 5,
+  "reviewsNum": 1
+},
+{
+  "_id": {
+    "$oid": "65d2135d5fda4334573ebc2b"
+  },
+  "reviews": [],
+  "firstname": "Tea",
+  "lastname": "Ristovic",
+  "username": "tearistovic",
+  "password": "ad98bb82615893ad2fee8e1b4af97f882e2c66ba6617f6a79d02b3f5263b0a3e",
+  "email": "tearistovic@gmail.com",
+  "mobile": "0655784325",
+  "securityQuestion": "Ime sestre",
+  "securityAnswer": "Mara",
+  "gender": "Z",
+  "address": "Kneza Milosa bb",
+  "grade": 4,
+  "schoolType": "srednja-gimnazija",
+  "picture": "tearistovic.jpg"
+},
+{
+  "_id": {
+    "$oid": "65d213d15fda4334573ebc39"
+  },
+  "reviews": [
+    {
+      "username": "natasabjelica",
+      "review": 2,
+      "_id": {
+        "$oid": "65d222595fda4334573ebe07"
+      }
+    }
+  ],
+  "firstname": "Stana",
+  "lastname": "Dobric",
+  "username": "stanadobric",
+  "password": "15ab4e8eb3cd349448b1af565079655f87ca7c34caf7850550dbafbe9634c7f6",
+  "email": "stanadobric@gmail.com",
+  "mobile": "0658712344",
+  "securityQuestion": "Ime i devojacko prezime mame",
+  "securityAnswer": "Dragana Tomic",
+  "gender": "Z",
+  "address": "Kneza Milosa bb",
+  "grade": 3,
+  "schoolType": "srednja-strucna",
+  "picture": "stanadobric.jpg",
+  "reviewsAvg": 2,
+  "reviewsNum": 1
+},
+{
+  "_id": {
+    "$oid": "65d2141a5fda4334573ebc4a"
+  },
+  "reviews": [
+    {
+      "username": "natasabjelica",
+      "_id": {
+        "$oid": "65d222625fda4334573ebe0b"
+      }
+    }
+  ],
+  "firstname": "Petar",
+  "lastname": "Milic",
+  "username": "petarmilic",
+  "password": "42761e6506e98936d36449ad2bc22b667b54931a699a1b0f3e1f294b79671dd4",
+  "email": "petarmilic@gmail.com",
+  "mobile": "0655784325",
+  "securityQuestion": "Naziv uciteljice",
+  "securityAnswer": "Nebitno",
+  "gender": "M",
+  "address": "Mirijevski venac",
+  "grade": 4,
+  "schoolType": "srednja-umetnicka",
+  "picture": "petarmilic.jpg",
+  "reviewsNum": 1
+},
+{
+  "_id": {
+    "$oid": "65d2147b5fda4334573ebc5b"
+  },
+  "reviews": [],
+  "firstname": "Iskra",
+  "lastname": "Jokic",
+  "username": "iskrajokic",
+  "password": "082a0f9da6e820f159bf48099b217411d41b11a70d8ab8384d944ee12383eb26",
+  "email": "iskrajokic@gmail.com",
+  "mobile": "0623454512",
+  "securityQuestion": "Naziv ljubimca",
+  "securityAnswer": "Zuca",
+  "gender": "Z",
+  "address": "Vojvode Cetkovica 23",
+  "grade": 4,
+  "schoolType": "osnovna",
+  "picture": "iskrajokic.jpg"
+}]

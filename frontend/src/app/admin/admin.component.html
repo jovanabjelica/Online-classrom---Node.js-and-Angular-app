@@ -1,0 +1,133 @@
+<header>
+    <h4>Moj najdrazi nastavnik</h4>
+    
+    <div class="dropdown">
+        <div>
+            <a routerLink="/charts" class="button">Dijagrami</a>
+            <a routerLink="/" class="button">Odjavi se</a>
+        </div>
+    </div>
+
+</header>
+
+<div class="container">  
+    <div class="requests">
+        <h1>Na cekanju</h1>
+        <form>
+            <table>
+                <tr>
+                    <th>Ime</th>
+                    <th>Prezime</th>
+                    <th>Biografija</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                <tr *ngFor="let t of teachers">
+                    <td> {{ t.firstname }} </td>
+                    <td> {{ t.lastname }} </td>
+                    <td><button class="button" (click)="downloadCv(t)">Vidi CV</button></td>
+                    <td><button class="button" (click)="accept(t.username)">Prihvati</button></td>
+                    <td><button class="button" (click)="reject(t.username)">Odbij</button></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+
+
+    <div class="students">
+        <h1>Studenti</h1>
+        <table class="table" style="width: 25%;">
+            <tr>
+                <th>Ime</th>
+                <th>Prezime</th>
+                <th>Razred</th>
+                <th>Skola</th>
+            </tr>
+            <tr *ngFor="let s of students">
+                <td> {{ s.firstname }} </td>
+                <td> {{ s.lastname }} </td>
+                <td> {{ s.grade }} </td>
+                <td> {{ s.schoolType }} </td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="teachers">
+        <h1>Nastavnici</h1>
+        <table class="table">
+            <tr>
+                <th>Ime</th>
+                <th>Prezime</th>
+                <th>Predmeti</th>
+                <th>Razredi</th>
+                <th></th>
+                <th></th>
+            </tr>
+            <tr *ngFor="let t of allTeachers">
+                <td> {{ t.firstname }} </td>
+                <td> {{ t.lastname }} </td>
+                <td> <div *ngFor="let s of t.subjects"> {{ s }} </div> </td>
+                <td> <div *ngFor="let g of t.grades"> {{ g }} </div> </td>
+                <td> <button class="button" (click)="update(t.username)">Azuriraj nastavnika</button> </td>
+                <td> <button class="button" (click)="deactivate(t.username)">Deaktiviraj nastavnika</button> </td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="update" *ngIf="showTeacherForUpdate">
+        <h1>Azuriranje nastavnika - {{teacher.firstname}} {{teacher.lastname}}</h1>
+        <table class="table">
+            <tr>
+                <td>Azuriraj listu razreda: </td>
+                <td>
+                    <div *ngFor="let g of teacher.grades" (change)="selectedGrades($event, g)"> <input type="checkbox" name="grade" id="">{{g}}</div>
+                </td>
+                <td><button class="button" (click)="updateGrades()">Azuriraj</button></td>
+            </tr>
+            <tr *ngIf="errGrades!=''">
+                <td colspan="3" class="error">
+                    {{ errGrades }}
+                </td>
+            </tr>
+            <tr>
+                <td>Azuriraj listu predmeta: </td>
+                <td>
+                    <div *ngFor="let s of teacher.subjects"><input type="checkbox" name="subject" id="" (change)="selectedSubject($event, s)">{{s}}</div>
+                </td>
+                <td><button class="button" (click)="updateSubjects()">Azuriraj</button></td>
+            </tr>
+            <tr *ngIf="errSubjects">
+                <td class="error" colspan="3">
+                    {{errSubjects}}
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3"><button class="button" (click)="hide()">Kraj rada</button></td>
+            </tr>   
+        </table>
+    </div>
+
+    <div class="newSubject">
+        <h1>Dodaj novi predmet</h1>
+        <table class="table" style="width: 20%;" *ngIf="otherSub.length>0">
+            <tr>
+                <th>Predlog</th>
+                <th>Prihvati</th>
+            </tr>
+            <tr *ngFor="let s of otherSub">
+                <td> {{ s }} </td>
+                <td><button class="button" (click)="addSub(s)">Dodaj</button></td>
+            </tr>
+        </table>
+        
+        <table>
+            <tr>
+                <td><input type="text" name="name" id="name" [(ngModel)]="name"></td>
+                <td><button class="button" (click)="add()">Dodaj</button></td>
+            </tr>
+            <tr *ngIf="errAdd!=''">
+                <td colspan="2" class="error"> {{ errAdd }} </td>
+            </tr>
+        </table>
+    </div>
+</div>

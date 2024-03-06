@@ -1,0 +1,98 @@
+<header>
+    <h4>Moj najdrazi nastavnik</h4>
+    
+    <div class="dropdown">
+        <div>
+            <a [routerLink]="['/studentClass', username]" class="header-button">Casovi</a>
+        </div>
+        <div class="dropdown-content">
+            <a [routerLink]="['/student', username]">Profil</a>
+            <a [routerLink]="['/teacherMenu', username]">Nastavnici</a>
+            <a routerLink="/">Odjavi se</a>
+        </div>
+    </div>
+</header>
+
+<div class="container">
+    <h2>ARHIVIRANI CASOVI</h2>
+    <div class="table-container">
+        <table class="table">
+            <tr>
+                <th>Nastavnik</th>
+                <th>Datum i vreme</th>
+                <th>Trajanje</th>
+                <th>Opis</th>
+                <th>Komentar</th>
+                <th>Potvrda komentara</th>
+                <th>Recenzija</th>
+                <th>Potvrda recenzije</th>
+                <th>Poruka nastavnika</th>
+            </tr>
+            <tr *ngFor="let c of classes">
+                <ng-container *ngIf="c.datetime < formatted && c.student === username">
+                    <td> {{ c.teacher }} </td>
+
+                    <td> {{ formatDateTime(c.datetime) | date:'yyyy-MM-dd HH:mm' }} </td>
+                    
+                    <td *ngIf="c.double==1">2h</td>
+                    <td *ngIf="c.double==0">1h</td>
+
+                    <td> {{ c.descr }} </td>
+                    
+                    <td *ngIf="!c.comment"><textarea name="comment" cols="15" rows="5" [(ngModel)]="comments[c.teacher+c.student+c.datetime+c.subject]"></textarea></td>
+                    <td *ngIf="!c.comment"><button class="button" (click)="submitComment(c)">Dodaj komentar</button></td>
+                    
+                    <td *ngIf="c.comment">Komentar vec dodat</td>
+                    <td *ngIf="c.comment">/</td>
+                    
+                    <td *ngIf="!c.review"><input type="range" name="review" min="1" max="5" [(ngModel)]="reviews[c.teacher+c.student+c.datetime+c.subject]"></td>
+                    <td *ngIf="!c.review"><button class="button" (click)="submitReview(c)">Dodaj recenziju</button></td>
+
+                    <td *ngIf="c.review">Recenzija vec dodata</td>
+                    <td *ngIf="c.review">/</td>
+                    
+
+                    <td *ngIf="c.teacherComment"> {{ c.teacherComment }} </td>
+                    <td *ngIf="!c.teacherComment"> / </td>
+                  </ng-container>
+            </tr>
+            <tr *ngIf="errComm!=''">
+                <td class="error"> {{ errComm }} </td>
+            </tr>
+        </table>
+    </div>
+    <br><br>
+
+    <h2>RASPORED CASOVA</h2>
+
+    
+    <table class="table table-container">
+        <tr>
+            <th>Nastavnik</th>
+            <th>Datum i vreme</th>
+            <th>Trajanje</th>
+            <th>Opis</th>
+        </tr>
+        <tr *ngFor="let c of classes">
+            <ng-container *ngIf="c.status === 'potvrdjeno' && c.datetime > formatted  && c.student === username">
+                <td> {{ c.teacher }} </td>
+
+                <td> {{ formatDateTime(c.datetime) | date:'yyyy-MM-dd HH:mm' }} </td>
+                
+                <td *ngIf="c.double==1">2h</td>
+                <td *ngIf="c.double==0">1h</td>
+
+                <td> {{ c.descr }} </td>
+
+                <td *ngIf="isWithin15Minutes(c.datetime)">
+                    <button class="button">Prikljuci se casu</button>
+                </td>
+            </ng-container>
+        </tr>
+        <tr *ngIf="errComm!=''">
+            <td class="error"> {{ errComm }} </td>
+        </tr>
+        
+    </table>
+    <br><br>
+</div>

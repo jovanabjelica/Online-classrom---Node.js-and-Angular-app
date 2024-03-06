@@ -1,0 +1,102 @@
+<header>
+    <h4>Moj najdrazi nastavnik</h4>
+    
+    <div class="dropdown">
+        <div>
+            <a [routerLink]="['/myStudents', username]" class="header-button">Moji ucenicni</a>
+        </div>
+        <div class="dropdown-content">
+            <a [routerLink]="['/teacher', username]">Profil</a>
+            <a [routerLink]="['/class', username]">Casovi</a>
+            <a routerLink="/">Odjavi se</a>
+        </div>
+    </div>
+
+</header>
+
+<div class="container">
+
+    <h1>Svi ucenici</h1>
+    
+    <div class="table-container">
+        <table class="table" style="width: 25%;">
+            <tr>
+                <th>Ucenik</th>
+                <th>Dosije</th>
+            </tr>
+            <tr *ngFor="let s of students">
+                <td> 
+                    {{ s.firstname }} {{ s.lastname }}
+                </td>
+                <td>
+                    <button class="button" (click)="showResume(s)">Prikazi dosije</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <br><br>
+
+    <div class="table container" *ngIf="show">
+        <h1>Dosije</h1>
+
+        <h2>Osnovne informacije</h2>
+
+        <table class="table" style="width: 30%;">
+            <tr>
+                <td>Ime: </td>
+                <td> {{ student.firstname }} </td>
+            </tr>
+            <tr>
+                <td>Prezime: </td>
+                <td> {{ student.lastname }} </td>
+            </tr>
+            <tr>
+                <td>Razred: </td>
+                <td> {{ student.grade }} </td>
+            </tr>
+            <tr>
+                <td>Skola: </td>
+                <td> {{ student.schoolType }} </td>
+            </tr>
+            
+            <tr>
+                <td><input type="range" min="1" max="5" [(ngModel)]="reviews[student.username]"></td>
+                <td><button class="button" (click)="submitReview()">Dodaj recenziju</button></td>
+            </tr>
+
+        </table>
+
+        <br><br>
+
+        <h2>Casovi</h2>
+
+        <table class="table">
+            <tr>
+                <th>Datum i vreme odrzavanja</th>
+                <th>Trajanje</th>
+                <th>Predmet</th>
+            </tr>
+            <tr *ngFor="let c of resume">
+                <td> {{ formatDateTime(c.datetime) | date:'yyyy-MM-dd HH:mm' }} </td>
+                <td *ngIf="c.double==1">2h</td>
+                <td *ngIf="c.double==0">1h</td>
+                <td> {{ c.subject }} </td>
+                
+                <td *ngIf="!c.teacherComment"><textarea name="comment" cols="15" rows="5" [(ngModel)]="comments[c.teacher+c.student+c.datetime+c.subject]"></textarea></td>
+                <td *ngIf="!c.teacherComment"><button class="button" (click)="submitComment(c)">Dodaj komentar</button></td>
+                
+                <td *ngIf="c.teacherComment">Komentar vec dodat</td>
+                <td *ngIf="c.teacherComment">/</td>
+
+            </tr>
+            <tr>
+                <td><button class="button" (click)="hide()">Sakrij</button></td>
+            </tr>
+            <tr *ngIf="commErr!=''">
+                <td class="errot"> {{ commErr }} </td>
+            </tr>
+        </table>
+    </div>
+
+</div>

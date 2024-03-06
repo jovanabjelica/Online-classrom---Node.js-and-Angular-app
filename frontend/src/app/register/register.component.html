@@ -1,0 +1,42 @@
+<app-header></app-header>
+<div class="container">
+    <h1>Registracija</h1>
+
+    <form>
+        <table>
+            <tr>
+                <td>Unesite korisnicko ime: </td>
+                <td><input type="text" name="username" id="username" [(ngModel)]="username"></td>        
+            </tr>
+            <tr>
+                <td colspan="2" class="error">
+                    {{ errorUsername }}
+                    <hr>
+                </td>
+            </tr>
+            <tr>
+                <td>Unesite vas email: </td>
+                <td><input type="text" name="email" id="email" [(ngModel)]="email"></td>
+            </tr>
+            <tr>
+                <td colspan="2" class="error">
+                    {{ errorEmail }}
+                    <hr>
+                </td>
+            </tr>
+            <tr>
+                <td>Tip korisnika: </td>
+                <td><input type="radio" id="teacher" name="type" value="teacher" [(ngModel)]="type">Profesor <input type="radio" name="type" id="student" value="student" [(ngModel)]="type">Student</td>
+            </tr>
+            <tr>
+                <td colspan="2" class="error">
+                    {{ errorType }}
+                    <hr>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2"><button class="button" (click)="registracija()">Registracija</button></td>
+            </tr>
+        </table>    
+    </form>
+</div>

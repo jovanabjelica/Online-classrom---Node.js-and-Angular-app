@@ -1,0 +1,3 @@
+npm install mutler
+npm install -g @angular/cli //prvo probaj bez ovoga
+npm install chart.js

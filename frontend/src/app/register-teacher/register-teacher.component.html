@@ -1,0 +1,133 @@
+<app-header></app-header>
+<div class="container">
+    <h1>Registracija-Profesor</h1>
+    <form>
+        <table>
+            <tr>
+                <td>Unesite ime: </td>
+                <td><input type="text" name="firstname" id="firstname" [(ngModel)]="firstname"></td>
+            </tr>
+            <tr>
+                <td colspan="2" class="error">
+                    {{ errorFirstname }}
+                    <hr>
+                </td>
+            </tr>
+            <tr>
+                <td>Unesite prezime: </td>
+                <td><input type="text" name="lastname" id="lastname" [(ngModel)]="lastname"></td>
+            </tr>
+            <tr>
+                <td colspan="2" class="error">
+                    {{ errorLastname }}
+                    <hr>
+                </td>
+            </tr>
+            <tr>
+                <td>Unesite lozinku: </td>
+                <td><input type="password" name="password" id="password" [(ngModel)]="password"></td>
+            </tr>
+            <tr>
+                <td colspan="2" class="error">
+                    {{ errorPassword }}
+                    <hr>
+                </td>
+            </tr>
+            <tr>
+                <td>Unesite broj telefona: </td>
+                <td><input type="text" name="mobile" id="mobile" [(ngModel)]="mobile"></td>
+            </tr>
+            <tr>
+                <td colspan="2" class="error">
+                    {{ errorMobile }}
+                    <hr>
+                </td>
+            </tr>
+            <tr>
+                <td>Unesite bezbedonosno pitanje: </td>
+                <td><input type="text" name="securityQuestion" id="securityQuestion" [(ngModel)]="securityQuestion"></td>
+            </tr>
+            <tr>
+                <td colspan="2" class="error">
+                    {{ errorSecurityQ }}
+                    <hr>
+                </td>
+            </tr>
+            <tr>
+                <td>Unesite bezbedonosni odgovor: </td>
+                <td><input type="text" name="securityAnswer" id="securityAnswer" [(ngModel)]="securityAnswer"></td>
+            </tr>
+            <tr>
+                <td colspan="2" class="error">
+                    {{ errorSecurityA }}
+                    <hr>
+                </td>
+            </tr>
+            <tr>
+                <td>Izaberite pol: </td>
+                <td><select name="gender" id="gender" [(ngModel)]="gender"> <option value="M">Muski</option><option value="Z">Zenski</option></select></td>
+            </tr>
+            <tr>
+                <td colspan="2" class="error">
+                    {{ errorGender }}
+                    <hr>
+                </td>
+            </tr>
+            <tr>
+                <td>Unesite adresu: </td>
+                <td><input type="text" name="address" id="address" [(ngModel)]="address"></td>
+            </tr>
+            <tr>
+                <td colspan="2" class="error">
+                    {{ errorAddress }}
+                    <hr>
+                </td>
+            </tr>
+            <tr>
+                <td>Izaberite predmete koje zelite da poducavate:</td>
+                <td>
+                    <div *ngFor="let s of subjectsFromMongo">
+                        <input type="checkbox" name="subject" id="s.name" value="s.name" (change)="selectedSubject($event, s.name)"> {{ s.name }} <br>
+                    </div>
+                    <input type="text" name="subject" id="ostalo" placeholder="Nesto drugo.." [(ngModel)]="otherSubject">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" class="error">
+                    {{ errorSubjects }}
+                    <hr>
+                </td>
+            </tr>
+            <tr>
+                <td>Uzrast ucenika: </td>
+                <td>
+                    <input type="checkbox" name="class" id="1" value="1" (change)="selectedGrade($event, '1-4. razred')"> Osnovna skola 1-4. razred<br>
+                    <input type="checkbox" name="class" id="5" value="5" (change)="selectedGrade($event, '5-8. razred')"> Osnovna skola 5-8. razred<br>
+                    <input type="checkbox" name="class" id="s" value="s" (change)="selectedGrade($event, 'Srednja skola')"> Srednja skola<br>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" class="error">
+                    {{ errorGrades }}
+                    <hr>
+                </td>
+            </tr>
+            <tr>
+                <td>Gde ste culi za nas sajt? </td>
+                <td><input type="text" name="source" id="source" [(ngModel)]="source"></td>
+            </tr>
+            <tr>
+                <td colspan="2" class="error">
+                    {{ errorSource }}
+                    <hr>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <button class="button" (click)="registracija()">Registruj se!</button>
+                </td>
+            </tr>            
+        </table>
+    </form>
+    <br><br>
+</div>

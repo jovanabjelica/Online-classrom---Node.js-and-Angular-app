@@ -1,0 +1,125 @@
+<header>
+    <h4>Moj najdrazi nastavnik</h4>    
+    <div class="dropdown">
+        <div>
+            <a [routerLink]="['/class', username]" class="header-button">Casovi</a>
+        </div>
+        <div class="dropdown-content">
+            <a [routerLink]="['/teacher', username]">Profil</a>
+            <a [routerLink]="['/myStudents', username]">Moji ucenicni</a>
+            <a routerLink="/">Odjavi se</a>
+        </div>
+    </div>
+</header>
+
+<div class="container">
+
+    <div class="classes">
+        <h2>Predstojeci casovi</h2>
+
+        <table>
+            <tr>
+                <th>Student</th>
+                <th>Predmet</th>
+                <th>Vreme</th>
+                <th>Opis</th>
+                <th>Dupli</th>
+                <th>Otkazivanje</th>
+                <th>Obrazlozenje otkazivanja casa</th>
+                <th>Pridruzivanje casu</th>
+            </tr>
+    
+            <tr *ngFor="let c of classes">
+                <td> {{ c.student }} </td>
+                <td> {{ c.subject }} </td>
+                <td> {{ formatDateTime(c.datetime) | date:'yyyy-MM-dd HH:mm' }} </td>
+                <td> {{ c.descr }} </td>
+                <td *ngIf="c.double==1"><input type="checkbox" name="" id="" checked disabled></td>
+                <td *ngIf="c.double==0">/</td>
+                    
+                <td *ngIf="isWithin4Hours(c.datetime)"><button class="button" (click)="cancelClass(c)">Otkazi cas</button></td>
+                <td *ngIf="isWithin4Hours(c.datetime)">
+                    <form>
+                        <textarea name="explanation" id="" cols="20" rows="3" [(ngModel)]="cancelExplanations[c.teacher + c.student + c.datetime + c.subject]"></textarea>
+                    </form>
+                </td>
+
+                <td *ngIf="!isWithin4Hours(c.datetime)"><b>Ne mozete otkazati</b></td>
+                <td *ngIf="!isWithin4Hours(c.datetime)">//////////////////////////////////////////////////</td>
+
+                <td *ngIf="isWithin15Minutes(c.datetime)"><button class="button" (click)="join(c)">Pridruzi se</button></td>
+                <td *ngIf="!isWithin15Minutes(c.datetime)"><button disabled>Pridruzi se</button></td>
+            </tr>
+            <tr>
+                <td colspan="4"><button class="button" (click)="showFirst10()">Prikazi prvih 10</button></td>
+                <td colspan="4"><button class="button" (click)="showAll()">Prikazi sve</button></td>
+            </tr>
+            <tr *ngIf="errorC!=''">
+                <td class="error">
+                    {{ errorC }}
+                </td>
+            </tr>
+        </table>
+
+    </div>
+
+    <div class="requests">
+        <h2>Zahtevi</h2>
+    
+        <table>
+            <tr>
+                <th>Student</th>
+                <th>Predmet</th>
+                <th>Vreme</th>
+                <th>Opis</th>
+                <th>Dupli</th>
+                <th></th>
+                <th></th>
+                <th>Obrazlozenje (samo za odbijanje)</th>
+            </tr>
+    
+            <tr *ngFor="let c of requests">
+                <td> {{ c.student }} </td>
+                <td> {{ c.subject }} </td>
+                <td> {{ formatDateTime(c.datetime) | date:'yyyy-MM-dd HH:mm' }} </td>
+                <td> {{ c.descr }} </td>
+                <td *ngIf="c.double==1"><input type="checkbox" name="" id="" checked disabled></td>
+                <td *ngIf="c.double==0">/</td>
+                <td><button class="button" (click)="bookClass(c)">Potvrdi</button></td>
+                <td><button class="button" (click)="rejectClass(c)">Odbij</button></td>
+                <td>
+                    <form>
+                        <textarea name="expl" id="" cols="20" rows="3" [(ngModel)]="explanations[c.teacher + c.student + c.datetime + c.subject]"></textarea>
+                    </form>
+                </td>
+            </tr>
+            <tr *ngIf="errCan!=''">
+                <td class="error">
+                    {{ errCan }}
+                </td>
+            </tr>
+        </table>
+    </div>
+    
+    <div class="workTime">
+        <h2>Dodavanje radnog vremena</h2>
+
+        <table>
+            <tr>
+                <td>Unesite pocetak radnog vremena: </td>
+                <td><input type="text" name="startWorkTime" id="startWorkTime" [(ngModel)]="startTime"></td>
+            </tr>
+            <tr>
+                <td>Unesite kraj radnog vremena: </td>
+                <td><input type="text" name="endWorkTime" id="endWorkTime" [(ngModel)]="endTime"></td>
+            </tr>
+            <tr>
+                <td>Da li zelite da radite vikendom? </td>
+                <td><input type="checkbox" name="weekend" id="weekend" [(ngModel)]="weekend"></td>
+            </tr>
+            <tr>
+                <td colspan="2"><button class="button" (click)="addWorkTime()">Potvrdi</button></td>
+            </tr>
+        </table>
+    </div>
+</div>

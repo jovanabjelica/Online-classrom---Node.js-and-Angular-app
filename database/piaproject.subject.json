@@ -1,0 +1,120 @@
+[{
+  "_id": {
+    "$oid": "65a94458a7a3dc2b39981c71"
+  },
+  "name": "Matematika"
+},
+{
+  "_id": {
+    "$oid": "65a94458a7a3dc2b39981c72"
+  },
+  "name": "Fizika"
+},
+{
+  "_id": {
+    "$oid": "65a94458a7a3dc2b39981c73"
+  },
+  "name": "Hemija"
+},
+{
+  "_id": {
+    "$oid": "65a94458a7a3dc2b39981c74"
+  },
+  "name": "Informatika"
+},
+{
+  "_id": {
+    "$oid": "65a94458a7a3dc2b39981c75"
+  },
+  "name": "Programiranje"
+},
+{
+  "_id": {
+    "$oid": "65a94458a7a3dc2b39981c76"
+  },
+  "name": "Srpski jezik i knjizevnost"
+},
+{
+  "_id": {
+    "$oid": "65a94458a7a3dc2b39981c77"
+  },
+  "name": "Engleski jezik"
+},
+{
+  "_id": {
+    "$oid": "65a94458a7a3dc2b39981c78"
+  },
+  "name": "Nemacki jezik"
+},
+{
+  "_id": {
+    "$oid": "65a94458a7a3dc2b39981c79"
+  },
+  "name": "Italijanski jezik"
+},
+{
+  "_id": {
+    "$oid": "65a94458a7a3dc2b39981c7a"
+  },
+  "name": "Francuski jezik"
+},
+{
+  "_id": {
+    "$oid": "65a94458a7a3dc2b39981c7b"
+  },
+  "name": "Spanski jezik"
+},
+{
+  "_id": {
+    "$oid": "65a94458a7a3dc2b39981c7c"
+  },
+  "name": "Latinski jezik"
+},
+{
+  "_id": {
+    "$oid": "65a94458a7a3dc2b39981c7d"
+  },
+  "name": "Biologija"
+},
+{
+  "_id": {
+    "$oid": "65a94458a7a3dc2b39981c7e"
+  },
+  "name": "Istorija"
+},
+{
+  "_id": {
+    "$oid": "65a94458a7a3dc2b39981c7f"
+  },
+  "name": "Geografija"
+},
+{
+  "_id": {
+    "$oid": "65a94458a7a3dc2b39981c81"
+  },
+  "name": "Svet oko nas"
+},
+{
+  "_id": {
+    "$oid": "65b8ef921e3c96dcef0b192a"
+  },
+  "name": "Kosarkaske taktike"
+},
+{
+  "_id": {
+    "$oid": "65b8f00f1e3c96dcef0b19a8"
+  },
+  "name": "Fizicko vaspitanje"
+},
+{
+  "_id": {
+    "$oid": "65b8f0741e3c96dcef0b1a64"
+  },
+  "name": "Muzicka kultura"
+},
+{
+  "_id": {
+    "$oid": "65d20e855fda4334573ebb7b"
+  },
+  "name": "Casovi glume"
+}]

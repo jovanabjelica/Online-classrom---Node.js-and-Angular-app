@@ -1,0 +1,175 @@
+<app-header></app-header>
+<div class="container">
+  
+  <div class="aboutWrap">
+    <img src="../../assets/static/homepageCoverPhoto.jpg" alt="" class="aboutBg">
+  
+    <div class="aboutContent">
+      
+      <div><p style="color: #C75B7D;">Online ucionica</p></div>
+      <div><h1>MOJ NAJDRAZI NASTAVNIK</h1></div>
+      <div><button class="button">Otkrij vise</button></div>
+   
+      <div>
+        <table class="coverTable">
+          <tr>
+            <td>
+              <div class="card">
+                <img src="../../assets/static/studentSticker.jpg" alt="Slika 1">
+                <div class="card-text">
+                  <h2>Ucenici</h2>
+                  <p>Veliki broj ucenika nam je pruzio poverenje!
+                    I iz prve ruke: Nisu se pokajali!
+                    <br>
+                    Trenutan broj ucenika: <b>{{ studentNum }}</b> 
+                  </p>
+                </div>
+              </div>
+            </td>
+            <td>
+              <div class="card">
+                <img src="../../assets/static/teacherSticker.jpg" alt="Slika 2">
+                <div class="card-text">
+                  <h2>Nastavnici</h2>
+                  <p>Nudimo Vam sirok asortiman nastavnika.
+                    Pre nego sto krenu sa predavanjima, nastavnici
+                    prolaze detaljnu proveru!
+                    <br>
+                    Trenutan broj nastavnika: <b>{{ teachersNum }}</b>
+                  </p>
+                </div>
+              </div>
+            </td>
+            <td>
+              <div class="card">
+                <img src="../../assets/static/booksSticker.jpg" alt="Slika 3">
+                <div class="card-text">
+                  <h2>Casovi</h2>
+                  <p>Veliki broj casova na nedeljnom/mesecnom nivou! <br>
+                    Broj casova na nedeljnom nivou: <b>{{ weekNum }}</b> <br>
+                    Broj casova na mesecnom nivou: <b>{{ monthNum }}</b>
+                  </p>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+
+      <br><br>
+    </div>
+  </div>
+
+  <div class="info">
+    <table>
+      <tr>
+        <td class="infoImg"><img src="../../assets/static/infoImage.jpg" alt=""></td>
+        <td>
+          <h1>Mi ukratko</h1>
+          <div>
+            <p>
+              Sportsman delighted improving dashwoods gay instantly happiness six. <br> 
+              Ham now amounted absolute not mistaken way pleasant whatever. <br> 
+              At an these still no dried folly stood thing. <br>
+              Rapid it on hours hills it seven years. <br>
+              If polite he active county in spirit an. <br>
+              Mrs ham intention promotion engrossed assurance defective. <br>
+              Confined so graceful building opinions whatever trifling in. Insisted out differed ham man endeavor expenses. 
+              <br>At on he total their he songs. Related compact effects is on settled do.
+            </p>
+          </div>
+          <div>
+            <button class="button">O nama</button>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="search">
+    <h1>Pretraga nastavnika</h1>
+    <table class="searchTable">
+      <tr>
+        <td><input type="text" id="firstName" [(ngModel)]="byName" name="firstName" placeholder="Ime.."></td>
+        <td><input type="text" id="lastName" [(ngModel)]="bySurname" name="lastName" placeholder="Prezime.."></td>
+        <td><input type="text" id="subject" [(ngModel)]="bySubject" name="subject" placeholder="Predmet.."></td>
+      </tr>
+      <tr>
+        <td colspan="4">
+          <button type="submit" class="button" (click)="searchTeachers()">Pretraži</button>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="searchResult"  *ngIf="search.length>0">
+    <h2>Rezultat pretrage</h2>
+
+    <table class="searchResultTable">
+      <tr>
+        <th>Nastavnik</th>
+        <th>Predmeti</th>
+      </tr>
+      <tr *ngFor="let s of search">
+        <td> {{ s.firstname }} {{ s.lastname }} </td>
+        <td>
+          <div *ngFor="let sub of s.subjects">
+            {{ sub }}
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2"><button class="button" (click)="hideSearch()">Sakrij pretragu</button></td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="offer">
+    <h2>Aktuelna ponuda predmeta</h2>
+  
+    <table class="tableOffer">
+      <tr>
+        <th>Naziv predmeta</th>
+        <th>Angažovani nastavnici</th>
+      </tr>
+      <tr *ngFor="let sub of subjects">
+        <td>{{ sub.name }}</td>
+        <td>
+          <button class="button" (click)="seeTeachers(sub)">Prikazi angazovane</button> 
+          <div *ngIf="selectedSubject === sub">
+            <br>
+            <table class="table">
+              <tr>
+                <th>Ime</th>
+                <th>Prezime</th>
+              </tr>
+              <tr *ngFor="let teacher of checkedTeachers">
+                <td>{{ teacher.firstname }}</td>
+                <td>{{ teacher.lastname }}</td>
+              </tr>
+              <tr>
+                  <td><button class="button" (click)="sortByNameAscending()">Sortiraj po imenu - rastuce</button></td>
+                  <td><button class="button" (click)="sortBySurnameAscending()">Sortiraj po prezimenu - rastuce</button></td>
+              </tr>
+              <tr>
+                <td><button class="button" (click)="sortByNameDescending()">Sortiraj po imenu - opadajuce</button></td>
+                <td><button class="button" (click)="sortBySurnameDescending()">Sortiraj po prezimenu - opadajuce</button></td>
+              </tr>
+              <tr>
+                  <td colspan="2"><button class="button" (click)="hideSubject()">Sakrij prikaz</button></td>
+              </tr>
+            </table>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <button class="button" (click)="sortSubjectAsc()">Sortiraj predmete - rastuce</button>
+        </td>
+        <td>
+          <button class="button" (click)="sortSubjectDesc()">Sortiraj predmete - opadajuce</button>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
